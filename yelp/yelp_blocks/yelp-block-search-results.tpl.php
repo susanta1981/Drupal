@@ -3,7 +3,7 @@
    * @file yelp_block_search_results.tpl.php
    *
    *  Default template for listing Yelp search results in a yelp block
-   *  
+   *
    *  Block specific template can be created by copying this template file to your theme
    *  and renaming it yelp-block-search-results--YELP_BLOCK_MACHINE_NAME.tpl.php
    *
@@ -38,6 +38,7 @@
    * @ingroup themable
    *
    */
+   global $base_path;
 ?>
 <div class="yelp-block-results" id="<?php echo $yelp_block->machine_name; ?>">
   <?php if ($businesses): ?>
@@ -51,6 +52,6 @@
   <?php endif; ?>
   <br />
   <a href="http://www.yelp.com" target="_blank">
-    <img src="/<?php echo drupal_get_path('module', 'yelp_api'); ?>/yelp-images/Powered_By_Yelp_Red.png" alt="Powered by Yelp!" />
+    <img src="<?php echo $base_path . drupal_get_path('module', 'yelp_api'); ?>/yelp-images/Powered_By_Yelp_Red.png" alt="Powered by Yelp!" />
   </a>
 </div>
