@@ -1,8 +1,0 @@
-name = Download document
-description = Web services to list / download documents uploaded by Admin
-package = Web Service
-
-core = 7.x
-
-files[] = document_download.inc
-files[] = document_download.module
