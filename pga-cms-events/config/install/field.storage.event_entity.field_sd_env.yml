@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - events
+    - options
+id: event_entity.field_sd_env
+field_name: field_sd_env
+entity_type: event_entity
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: int
+      label: Integration
+    -
+      value: prod
+      label: Production
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

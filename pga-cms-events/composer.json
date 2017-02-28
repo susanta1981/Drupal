@@ -1,0 +1,6 @@
+{
+  "name": "vgtf/pga-cms-events",
+  "type": "drupal-custom-module",
+  "description": "Create Events entity",
+  "version": "8.x-0.2"
+}

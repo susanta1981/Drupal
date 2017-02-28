@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.event_entity.field_component_active
+    - taxonomy.vocabulary.homepage_components
+  module:
+    - events
+id: event_entity.event_entity.field_component_active
+field_name: field_component_active
+entity_type: event_entity
+bundle: event_entity
+label: Component
+description: 'Choose an available component to display on the homepage of this event.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      homepage_components: homepage_components
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

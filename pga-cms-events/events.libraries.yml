@@ -1,0 +1,4 @@
+events.icon:
+  css:
+    theme:
+      css/events.css: {}

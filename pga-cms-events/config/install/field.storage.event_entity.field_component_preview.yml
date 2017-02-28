@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - events
+    - taxonomy
+id: event_entity.field_component_preview
+field_name: field_component_preview
+entity_type: event_entity
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,129 @@
+<?php
+
+/**
+ * @file
+ * Install and update hooks for events.
+ */
+
+ use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_schema().
+ */
+function events_schema() {
+  $schema['event_defaults'] = [
+    'description' => 'Event Defaults Tables',
+    'fields' => [
+      'eid' => [
+        'description' => 'Event ID',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'event_name' => [
+        'description' => 'Event Name',
+        'type' => 'varchar',
+        'length' => 191,
+        'not null' => TRUE,
+      ],
+      'default_year' => [
+        'description' => 'Default Year',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0
+      ],
+      'url_slug' => [
+        'description' => 'URL Slug',
+        'type' => 'varchar',
+        'length' => 191,
+        'not null' => TRUE,
+      ]
+    ],
+    'primary key' => ['eid'],
+    'unique keys' => [
+      'event_name' => ['event_name'],
+      'url_slug' => ['url_slug'],
+    ],
+  ];
+  return $schema;
+}
+
+function events_install() {
+  /*
+   * Create new vocabulary if they dont already exist.
+   */
+    $vocabs = array();
+    $vocabs[] = array("vid" => "event_year","name" => "Event Year");
+    $vocabs[] = array("vid" => "event_name","name" => "Event Name");
+    $vocabs[] = array("vid" => "author","name" => "Author");
+    $system_vocabs = \Drupal\taxonomy\Entity\Vocabulary::loadMultiple();
+    foreach($vocabs as $vocab){
+      if (!isset($system_vocabs[$vocab['vid']])) {
+        $vocabulary = \Drupal\taxonomy\Entity\Vocabulary::create(array(
+              'vid' => $vocab['vid'],
+              'machine_name' => $vocab['vid'],
+              'name' => $vocab['name'],
+        ));
+        $vocabulary->save();
+      }
+      else {
+        $message = 'The vocabulary ' . $vocab['name'] . ' already exists.';
+        \Drupal::logger('events')->notice($message);
+      }
+    }
+
+
+  $type_manager = \Drupal::service('entity_type.manager')->getStorage("taxonomy_term");
+  /*
+   * Add a couple years to our Event Year vocab.
+   */
+
+  $vocab = "event_year";
+  $years = array(
+    date("Y",strtotime("-1 year")),
+    date("Y"),
+    date("Y",strtotime("+1 year"))
+  );
+
+  $event_year_terms = $type_manager->loadTree($vocab);
+  $year_terms=array();
+  for( $i= 0 ; $i < count($event_year_terms) ; $i++ )
+  {
+    $year_terms[] = $event_year_terms[$i]->name;
+  }
+  foreach($years as $year){
+    if(!in_array($year,$year_terms)){
+      $term = \Drupal\taxonomy\Entity\Term::create([
+        'name' => $year,
+        'vid' => $vocab,
+      ]);
+      $term->save();
+    }
+  }
+
+  /*
+   * Add a couple names to our Event Name vocab.
+   */
+
+  $vocab = "event_name";
+  $terms = array(
+    "PGA Championship",
+    "Senior PGA Championship"
+  );
+  $event_name_terms = $type_manager->loadTree($vocab);
+  $event_names=array();
+  for( $i= 0 ; $i < count($event_name_terms) ; $i++ )
+  {
+    $event_names[] = $event_name_terms[$i]->name;
+  }
+  foreach($terms as $term_name){
+    if(!in_array($term_name,$event_names)){
+      $term = \Drupal\taxonomy\Entity\Term::create([
+        'name' => $term_name,
+        'vid' => $vocab,
+      ]);
+      $term->save();
+    }
+  }
+
+}

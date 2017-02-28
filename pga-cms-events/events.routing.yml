@@ -1,0 +1,22 @@
+# This file brings everything together. Very nifty!
+
+# Route name can be used in several places; e.g. links, redirects, and local
+# actions.
+
+entity.events.title_form:
+  path: 'events/add/title'
+  defaults:
+    _form: '\Drupal\events\Form\EventTitleForm'
+    _title: 'Event Title'
+  requirements:
+    _permission: 'view events'
+  options:
+    _admin_route: TRUE
+
+events.config.defaults:
+  path: '/admin/structure/events/default'
+  defaults:
+    _form: '\Drupal\events\Form\EventDefaultsForm'
+    _title: 'Events'
+  requirements:
+    _permission: 'administer events'

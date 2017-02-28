@@ -1,0 +1,22 @@
+add event:
+  title: 'Create new Event'
+
+administer events:
+  title: 'Administer Events'
+  description: 'Allow to access the administration form to configure Events.'
+  restrict access: true
+
+delete event:
+  title: 'Delete an Event'
+
+edit event:
+  title: 'Edit an Event'
+
+view published events:
+  title: 'View published Events'
+
+view unpublished events:
+  title: 'View unpublished Events'
+
+view events:
+  title: 'View Events'

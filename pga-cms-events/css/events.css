@@ -1,0 +1,8 @@
+.toolbar-icon-entity-event-entity-collection:before {
+    background-image: url(../misc/icons/787878/events_icon.svg);
+}
+
+.toolbar-icon-entity-event-entity-collection:active:before,
+.toolbar-icon-entity-event-entity-collection.is-active:before {
+    background-image: url(../misc/icons/000000/events_icon.svg);
+}

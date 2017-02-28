@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Homepage Components'
+vid: homepage_components
+description: 'Holds different component types to display on the homepage.'
+hierarchy: 0
+weight: 0

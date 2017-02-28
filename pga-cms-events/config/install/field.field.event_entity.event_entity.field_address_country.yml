@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.event_entity.field_address_country
+  module:
+    - events
+id: event_entity.event_entity.field_address_country
+field_name: field_address_country
+entity_type: event_entity
+bundle: event_entity
+label: Country
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

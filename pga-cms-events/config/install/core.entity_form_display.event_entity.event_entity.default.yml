@@ -1,0 +1,455 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.event_entity.event_entity.field_address_country
+    - field.field.event_entity.event_entity.field_address_locality
+    - field.field.event_entity.event_entity.field_address_region
+    - field.field.event_entity.event_entity.field_ads_poll_interval
+    - field.field.event_entity.event_entity.field_component_active
+    - field.field.event_entity.event_entity.field_component_preview
+    - field.field.event_entity.event_entity.field_end_date
+    - field.field.event_entity.event_entity.field_event_css
+    - field.field.event_entity.event_entity.field_event_footer_img
+    - field.field.event_entity.event_entity.field_event_header_img
+    - field.field.event_entity.event_entity.field_event_location
+    - field.field.event_entity.event_entity.field_event_logo
+    - field.field.event_entity.event_entity.field_event_meta_date
+    - field.field.event_entity.event_entity.field_event_meta_location
+    - field.field.event_entity.event_entity.field_event_meta_name
+    - field.field.event_entity.event_entity.field_feed_poll_interval
+    - field.field.event_entity.event_entity.field_footer_logo
+    - field.field.event_entity.event_entity.field_leaderboard_reference
+    - field.field.event_entity.event_entity.field_menu_bfoot_link
+    - field.field.event_entity.event_entity.field_menu_ham_link
+    - field.field.event_entity.event_entity.field_menu_main_link
+    - field.field.event_entity.event_entity.field_menu_tfoot_link
+    - field.field.event_entity.event_entity.field_postal_code
+    - field.field.event_entity.event_entity.field_sd_env
+    - field.field.event_entity.event_entity.field_start_date
+    - field.field.event_entity.event_entity.field_street_address
+    - image.style.thumbnail
+  module:
+    - datetime
+    - events
+    - field_group
+    - image
+    - link
+third_party_settings:
+  field_group:
+    group_event_meta:
+      children:
+        - field_event_meta_name
+        - group_location
+      parent_name: group_event
+      weight: 4
+      label: 'Meta Data'
+      format_type: tab
+      format_settings:
+        formatter: closed
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: true
+    group_nav_tabs:
+      children:
+        - group_menu_main
+        - group_menu_ham
+        - group_menu_tfoot
+        - group_menu_bfoot
+      parent_name: ''
+      weight: 1
+      label: Navigation
+      format_type: tabs
+      format_settings:
+        direction: vertical
+        classes: ''
+        id: ''
+    group_event_images:
+      children:
+        - group_header
+        - group_footer
+      parent_name: group_event
+      weight: 3
+      label: Images
+      format_type: tab
+      format_settings:
+        formatter: closed
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: true
+    group_menu_main:
+      children:
+        - field_menu_main_link
+      parent_name: group_nav_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        formatter: closed
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: true
+      label: 'Main Menu'
+    group_menu_ham:
+      children:
+        - field_menu_ham_link
+      parent_name: group_nav_tabs
+      weight: 21
+      format_type: tab
+      format_settings:
+        formatter: closed
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: true
+      label: 'Hamburger Menu'
+    group_menu_tfoot:
+      children:
+        - field_menu_tfoot_link
+      parent_name: group_nav_tabs
+      weight: 22
+      format_type: tab
+      format_settings:
+        formatter: closed
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: true
+      label: 'Top Footer Menu'
+    group_menu_bfoot:
+      children:
+        - field_menu_bfoot_link
+      parent_name: group_nav_tabs
+      weight: 23
+      format_type: tab
+      format_settings:
+        formatter: closed
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: true
+      label: 'Bottom Footer Menu'
+    group_event_admin:
+      children:
+        - field_ads_poll_interval
+        - field_feed_poll_interval
+        - field_sd_env
+        - field_event_css
+      parent_name: ''
+      weight: 4
+      format_type: details
+      format_settings:
+        open: true
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: true
+      label: Admin
+    group_homepage_components:
+      children:
+        - group_homepage
+        - group_homepage_preview
+      parent_name: group_event
+      weight: 5
+      format_type: tab
+      format_settings:
+        formatter: closed
+        description: ''
+        classes: ''
+        id: ''
+        required_fields: true
+      label: 'Homepage Components'
+    group_homepage:
+      children:
+        - field_component_active
+      parent_name: group_homepage_components
+      weight: 20
+      format_type: details
+      format_settings:
+        label: Homepage
+        open: true
+        required_fields: true
+        id: ''
+        classes: ''
+      label: Homepage
+    group_homepage_preview:
+      children:
+        - field_component_preview
+      parent_name: group_homepage_components
+      weight: 21
+      format_type: details
+      format_settings:
+        label: 'Homepage Preview'
+        open: true
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Homepage Preview'
+    group_location:
+      children:
+        - field_event_location
+        - field_start_date
+        - field_end_date
+        - field_street_address
+        - field_address_locality
+        - field_address_region
+        - field_postal_code
+        - field_address_country
+      parent_name: group_event_meta
+      weight: 9
+      format_type: details
+      format_settings:
+        label: Location
+        open: true
+        required_fields: true
+        id: ''
+        classes: ''
+      label: Location
+    group_header:
+      children:
+        - field_event_logo
+        - field_event_header_img
+      parent_name: group_event_images
+      weight: 20
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Header
+    group_footer:
+      children:
+        - field_footer_logo
+        - field_event_footer_img
+      parent_name: group_event_images
+      weight: 21
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Footer
+    group_event:
+      children:
+        - group_event_images
+        - group_event_meta
+        - group_homepage_components
+        - group_leaderboard
+      parent_name: ''
+      weight: 3
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: vertical
+      label: Event
+    group_leaderboard:
+      children:
+        - field_leaderboard_reference
+      parent_name: group_event
+      weight: 6
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Leaderboard
+id: event_entity.event_entity.default
+targetEntityType: event_entity
+bundle: event_entity
+mode: default
+content:
+  event_title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 80
+      placeholder: ''
+    third_party_settings: {  }
+  field_address_country:
+    weight: 41
+    settings:
+      size: 60
+      placeholder: 'United States'
+    third_party_settings: {  }
+    type: string_textfield
+  field_address_locality:
+    weight: 38
+    settings:
+      size: 60
+      placeholder: Charlotte
+    third_party_settings: {  }
+    type: string_textfield
+  field_address_region:
+    weight: 39
+    settings:
+      size: 37
+      placeholder: 'North Carolina'
+    third_party_settings: {  }
+    type: string_textfield
+  field_ads_poll_interval:
+    weight: 42
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_component_active:
+    weight: 25
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_component_preview:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_end_date:
+    weight: 36
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+  field_event_css:
+    weight: 45
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_event_footer_img:
+    weight: 23
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_event_header_img:
+    weight: 22
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_event_location:
+    weight: 34
+    settings:
+      size: 60
+      placeholder: 'Qual Hollow Club'
+    third_party_settings: {  }
+    type: string_textfield
+  field_event_logo:
+    weight: 21
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_event_meta_name:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: '2017 PGA Championship'
+    third_party_settings: {  }
+    type: string_textfield
+  field_feed_poll_interval:
+    weight: 43
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_footer_logo:
+    weight: 22
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_leaderboard_reference:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_menu_bfoot_link:
+    weight: 24
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_menu_ham_link:
+    weight: 22
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_menu_main_link:
+    weight: 21
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_menu_tfoot_link:
+    weight: 23
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_postal_code:
+    weight: 40
+    settings:
+      size: 20
+      placeholder: '28120'
+    third_party_settings: {  }
+    type: string_textfield
+  field_sd_env:
+    weight: 44
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_start_date:
+    weight: 35
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+  field_street_address:
+    weight: 37
+    settings:
+      size: 60
+      placeholder: '3700 Gleaneagles Road'
+    third_party_settings: {  }
+    type: string_textfield
+  langcode:
+    type: language_select
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_event_meta_date: true
+  field_event_meta_location: true

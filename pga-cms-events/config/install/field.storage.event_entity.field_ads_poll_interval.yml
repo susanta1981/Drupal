@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - events
+    - options
+id: event_entity.field_ads_poll_interval
+field_name: field_ads_poll_interval
+entity_type: event_entity
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 30
+      label: '30'
+    -
+      value: 60
+      label: '60'
+    -
+      value: 90
+      label: '90'
+    -
+      value: 120
+      label: '120'
+    -
+      value: 7200
+      label: Long
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,13 @@
+name: Events
+type: module
+description: Creates the ability to add Events(entity).
+core: 8.x
+version: 8.x-1.0
+package: PGA (CMS)
+dependencies:
+  - draco_dynaimage
+  - field_group
+  - file
+  - image
+  - taxonomy
+  - leaderboard

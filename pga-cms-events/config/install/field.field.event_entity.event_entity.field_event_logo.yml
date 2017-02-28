@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.event_entity.field_event_logo
+  module:
+    - events
+    - draco_dynaimage
+    - image
+third_party_settings:
+  draco_dynaimage:
+    enabled: true
+id: event_entity.event_entity.field_event_logo
+field_name: field_event_logo
+entity_type: event_entity
+bundle: event_entity
+label: 'Event Logo'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image
