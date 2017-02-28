@@ -1,7 +1,0 @@
-services:
-  cache.events_cache:
-    class: Drupal\Core\Cache\CacheBackendInterface
-    arguments: ['events_cache']
-    factory: cache_factory:get
-    tags:
-      - { name: cache.bin }
