@@ -1,0 +1,5 @@
+$node_storage = \Drupal::entityManager()->getStorage('node');
+$node = $node_storage->load(2);
+$col_storage = \Drupal::entityManager()->getStorage('field_collection_item');
+$collection = $col_storage->load(1);
+ksm($collection->get('field_url')->getValue());
